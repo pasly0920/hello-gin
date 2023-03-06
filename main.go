@@ -26,6 +26,12 @@ func setupRouter() *gin.Engine {
 			message := name + " is " + action
 			c.String(http.StatusOK, message)
 		})
+
+		user.GET("/welcome", func(c *gin.Context) {
+			name := c.Query("name")
+
+			c.String(http.StatusOK, "Hello %s", name)
+		})
 	}
 
 	// JSON 바인딩 예제 ({"user": "manu", "password": "123"})
